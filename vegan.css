@@ -72,7 +72,7 @@ hr{
 	float:left;
 	height: 100px;
 	width: 100px;
-	background-image:url(lupe2.png);
+	background-image:url(img/lupe2.png);
 	border-radius:50px 50px 50px 50px;
 	border:0.5px solid #6A0888 ;
 }
