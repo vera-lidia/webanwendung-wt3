@@ -1,0 +1,36 @@
+
+body{
+	font-family: Arial;
+	font-size:14px;
+	color:#000000;
+	background-color:#f2f2f2;
+	color:#f2f2f2;
+}
+
+
+
+
+.wrapper{
+	width:140mm;
+	height:50mm;
+	background-color:#cccccc;
+	margin: 0 auto;
+	padding: 50px;
+	padding-top:100px;
+}
+
+
+
+.eingabe{
+	height:40px;
+	width: 135mm;
+
+}
+
+.button{
+	height: 40px;
+	width:135px;
+	background-color:#ECCEF5;
+	box-shadow:none;
+	border: 1px solid #6A0888;
+}
