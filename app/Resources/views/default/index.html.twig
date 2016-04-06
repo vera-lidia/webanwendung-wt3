@@ -2,7 +2,6 @@
 
 {% block body %}
     <div class="wrapper">
-      <a href="logout.php"><img src="img/logout.png" style="width:20px; margin-left:490px"/></a>
       <img src="img/Unbenannt.jpg"/>
       <img src="img/Download.png"/>
       <div class="rahmen">
@@ -13,27 +12,34 @@
 <!-- zweiter Schritt: Query ausprobieren (Bild)-->
 <!-- dritter Schritt: id des Containers, AJAX/JQuery / innerhtml-->
           <script type="text/javascript">
-            function eingabeAnUrlAnhaengen(){
-            var input = document.getElementById("eingabe").value;
-    
-            $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input, function(data) 
+            function eingabeAnUrlAnhaengen()
               {
-                console.log(data);
-                console.log(data.records[0].fields.gtin_img);
-                $('#kreis2').css('background-image', 'url(' + data.records[0].fields.gtin_img +')');
-            })
-            }
-            
-              ingrArr = data.records[0].fields.ingredients.split(' ');
-              bl=["BUTTER","MILK","EGG","YOGHURT","CREAM"]
+                var input = document.getElementById("eingabe").value;
+
+                $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input, function(data) 
+                  {
+                    console.log(data);
+                    console.log(data.records[0].fields.gtin_img);
+                    $('#kreis2').css('background-image', 'url(' + data.records[0].fields.gtin_img +')');
+                    
+                    
+                                  ingrArr = data.records[0].fields.ingredients.split(' ');
+              bl=["BUTTER","MILK","EGG","YOGHURT","CREAM", "CHICKEN", "BEEF", "PORK", "HONEY"];
               for(var i = 0; i < ingrArr.length; i++) {
                   var ingr = ingrArr[i];
                   ingr = ingr.toUpperCase();
-                  
-                  if (bl.contains(ingr)) {
-                    console.log('gut');
+                  if (bl.indexOf(ingr) > -1) {
+                    console.log('nicht vegan');
+                    $('#kreis3').css('background-image', 'url("img/x.jpg")');
                   }
-              }
+                  else{
+                  console.log('vegan')
+                   $('#kreis3').css('background-image', 'url("img/haken.jpg")');   
+                }
+
+                }
+            });
+                      }
 
           </script>
           <input class="button" type="button" name="suchen" value="los!" onClick="eingabeAnUrlAnhaengen()">
