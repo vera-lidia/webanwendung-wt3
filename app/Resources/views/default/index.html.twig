@@ -15,7 +15,24 @@
           <script type="text/javascript">
             function eingabeAnUrlAnhaengen(){
             var input = document.getElementById("eingabe").value;
-            location.href = "http://pod.opendatasoft.com/api/datasets/1.0/search/?q=" + input;
+            //location.href = "http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input;
+            //}
+              
+              
+            $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input, function(data) 
+              {
+                console.log(data);
+                console.log(data.records[0].fields.gtin_img);
+                $('#kreis2').append('<img src="' + data.records[0].fields.gtin_img + '">');
+            })
+            }
+            
+            $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=ingredients:" function(data){
+                console.log(data);
+                console.log(data.records[0].fields.ingredients);
+                $('#kreis3').append('img src="img/haken.jpg);
+                $('#kreis3').append('img src="img/x.jpg);
+            })
             }
           </script>
           <input class="button" type="button" name="suchen" value="los!" onClick="eingabeAnUrlAnhaengen()">
@@ -114,6 +131,7 @@ hr{
 	height: 100px;
 	width: 100px;
 	background-image:url(img/lupe2.png);
+    background-repeat: no-repeat;
 	border-radius:50px 50px 50px 50px;
 	border:0.5px solid #6A0888 ;
 }
@@ -122,7 +140,8 @@ hr{
 	margin-left:210px;
 	height: 100px;
 	width: 100px;
-	background-color:white;
+    background-repeat: no-repeat;
+    background-size: 100px 100px;
 	border-radius:50px 50px 50px 50px;
 	border:0.5px solid #6A0888 ;
 }
@@ -132,7 +151,6 @@ hr{
 	margin-top: -100px;
 	height: 100px;
 	width: 100px;
-	background-image:url(img/haken.jpg);;
 	border-radius:50px 50px 50px 50px;
 	border:0.5px solid #6A0888 ;
 }
