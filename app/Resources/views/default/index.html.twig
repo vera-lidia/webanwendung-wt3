@@ -15,25 +15,26 @@
           <script type="text/javascript">
             function eingabeAnUrlAnhaengen(){
             var input = document.getElementById("eingabe").value;
-            //location.href = "http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input;
-            //}
-              
-              
+    
             $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=gtin_cd:" + input, function(data) 
               {
                 console.log(data);
                 console.log(data.records[0].fields.gtin_img);
-                $('#kreis2').append('<img src="' + data.records[0].fields.gtin_img + '">');
+                $('#kreis2').css('background-image', 'url(' + data.records[0].fields.gtin_img +')');
             })
             }
             
-            $.get("http://pod.opendatasoft.com/api/records/1.0/search/?dataset=pod_nutrition_us&q=ingredients:" function(data){
-                console.log(data);
-                console.log(data.records[0].fields.ingredients);
-                $('#kreis3').append('img src="img/haken.jpg);
-                $('#kreis3').append('img src="img/x.jpg);
-            })
-            }
+              ingrArr = data.records[0].fields.ingredients.split(' ');
+              bl=["BUTTER","MILK","EGG","YOGHURT","CREAM"]
+              for(var i = 0; i < ingrArr.length; i++) {
+                  var ingr = ingrArr[i];
+                  ingr = ingr.toUpperCase();
+                  
+                  if (bl.contains(ingr)) {
+                    console.log('gut');
+                  }
+              }
+
           </script>
           <input class="button" type="button" name="suchen" value="los!" onClick="eingabeAnUrlAnhaengen()">
         </form>
