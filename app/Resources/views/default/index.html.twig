@@ -8,9 +8,7 @@
         <img src="img/code.png" style="margin-left:3.5px"/><br/>
         <form name="anfrage" method="post">
           <input id="eingabe" type="text" size="30" maxlength="13" placeholder="Hier die EAN eingeben!">
-<!--erster Schritt: URl in Variable-->
-<!-- zweiter Schritt: Query ausprobieren (Bild)-->
-<!-- dritter Schritt: id des Containers, AJAX/JQuery / innerhtml-->
+<!-- AJAX/JQuery-->
           <script type="text/javascript">
             function eingabeAnUrlAnhaengen()
               {
@@ -24,7 +22,7 @@
                     
                     
                                   ingrArr = data.records[0].fields.ingredients.split(' ');
-              bl=["BUTTER","MILK","EGG","YOGHURT","CREAM", "CHICKEN", "BEEF", "PORK", "HONEY"];
+              bl=["BUTTER","MILK","EGG","YOGURT","CREAM", "CHICKEN", "BEEF", "PORK", "HONEY", "CHEESE"];
               for(var i = 0; i < ingrArr.length; i++) {
                   var ingr = ingrArr[i];
                   ingr = ingr.toUpperCase();
